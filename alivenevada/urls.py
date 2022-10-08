@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from web.views import ContributeView, LoginView, RegisterView
+from django.views.generic import TemplateView
+from django.conf.urls.static import static
+from django.conf import settings
+from django.urls import path, include
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', TemplateView.as_view(template_name='index.html')),
+    path('contribute/', login_required(ContributeView.as_view())),
+    path('login/', LoginView.as_view(), name='login'),
+    path('register/', RegisterView.as_view(), name='register'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
