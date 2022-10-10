@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "alivenevada",
+  "private_key_id": "53f0544dbf1cebfb8c84f03b9b03bbd0f074b353",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDc3fKZmCXPb3+K\nBbYNoXsRpv/X1Z6ONfNyEDHIQeiGVh0Khd0EE20X9hcbwopdEcKTBdWgTySrO+1l\nerX7AIBfLZd92ZTVFnanTbfDUzozKu0X5d7T3yryXMMDPogb0iQrGfK6yWed/3BO\nCS+W4gvHuPTw2PTql0fCR4WtiBgxkb638tIxzfU2ooppOgESZHGLbj5fzXQfh0ep\ndjJfv/VhQpVeNxvLM82EhLAc3bfpkKRZT++Hi+X+OgAwPdq3gK+XKkjkpPA2/9Xx\nszxjP59mxpfHrhFQCWbKzmIjR++b7QPW17CAu59ChDMVcM7qve2ss+2XEfqgFHEZ\ngIC0Orf3AgMBAAECggEAVsfGCF9li8mNXRe9XkGyb08kexNuBwZfrtN6G+r5h77S\nDk5mdrGDTcTdc4TOhJ7zynyiYSh3iegz8Il0czjRN5RcT5BsEAWRfU7mAxLybSRS\nn+8rzCeFYlDcNqwdIoFAwMajPozf745r+91UG36ZjlG3u+Ii6QGjqkwb1AEDMIYO\nQP2ei34FwadwM8cs7+n5ptXkJ5FDIPShlQNvoREDBNEKtGBoBE/WFrEnBAQws+Qd\nhkOZ75itesjc0IW90pTjAy5IEC7R7bsIEVErq0uBkFF90sVxFX7YmRgZy7Hn+eib\nPamQOvBTHgtkIsD706tgc4rjJPXOIAfzEkWKrlfLAQKBgQD6sEJL0J7IActkpaPK\n4UtWE8Lh93mmm/TfeVGiA0ko+kjRA+TtPFG861+jF5uckxm6CQxJT6ATLS9sI4fF\n8c1tv9pyN+9DpuTmxKkqPhyhrlWBq9slq07YSqZiy1oqIPsNUo1q6IrUeXhjTgOe\n8I0Rp6G49xpviRldA5KOeOqitwKBgQDhi++ZmI3eh9eWHRGU5+rxL+T+Tehx434F\nY/gO6iXAogduhYRN4yuwfvxP/xUVWh1s7KgZRbbX2jleQEN9N5Dh9lE30h8ikOQY\n/Mon0D4LQ0wuYkIwoT/0PruLRAIs1iUcnGGESDvJglXbIYwZuJ99cdw8JHD2BluA\noKFx555UwQKBgAo7dYlIq6J4SEgEZsoaJgwOZG76vfFp/jW86vMU9UCB7sTxRr/U\nLXXrmYy7ovNiIbOxONopMNx3hK8CSEFxHDR1l0IAPHjjcAZnUoxR2rNSvVS8ogZI\nlsBHU8FGkZiUngquKu2JLll718kd3xH2uZtV30kAdQjGbM2aHrpH/zPDAoGBAKiZ\nkIwCq9pzNUbzh9cF3mxY3xbyahXodqXU6vNLONlcxa1qhVIrxNb0teuexMXnTSPF\nbIsnv9xvNn8sDsclqFohZOkTW07dfITpQrysQBTvQ51QuiXcBBCybENYnT+i/K78\nfzEBRiAGG+PomfAIQMDnQjh7DS375p6qdMTO3V6BAoGBAOu7RiagxeyOf0vBZTgo\ni6/0uX17W+z0w48Lxl1gqY2cbtWA6Ki+OZLxabILFhj/7OZxM87LFI6/QUtRr7Ks\nzWE+YA4n7P0U/yzVRAK6ZKFELvbL5pud68yVwocfXCFFDbzZ6epMl0uNctpFOGC+\n9bgNCk7uFKdRg+DlqL80UZK/\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ykkha@alivenevada.iam.gserviceaccount.com",
+  "client_id": "103333874608627597798",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ykkha%40alivenevada.iam.gserviceaccount.com"
+}
