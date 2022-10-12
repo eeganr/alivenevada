@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.views import ContributeView, LoginView, RegisterView
+from web.views import ContributeView, LoginView, RegisterView, AnimalsView
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,4 +27,5 @@ urlpatterns = [
     path('contribute/', login_required(ContributeView.as_view())),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('animals/', login_required(AnimalsView.as_view())),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

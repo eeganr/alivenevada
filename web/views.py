@@ -79,3 +79,26 @@ class RegisterView(TemplateView):
                             request.session['fbtoken'] = fb.user['refreshToken']
                             return redirect('/contribute/')
         return render(request, self.template_name, {'ctx': self.ctx})
+
+class AnimalsView(TemplateView):
+    def __init__(self):
+        self.template_name = 'login.html'
+        self.ctx = ''
+
+    def get(self, request):
+        return render(request, self.template_name, {'ctx': self.ctx})
+
+    def post(self, request):
+        rq = request.POST.dict()
+        if "email" in rq and "password" in rq:
+            email = rq['email']
+            password = rq['password']
+            user = authenticate(username=email, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                fb = Firebase()
+                fb.login(email, password)
+                request.session['fbtoken'] = fb.user['refreshToken']
+                return redirect('/contribute/')
+            self.ctx = "Invalid email or password."
+        return render(request, self.template_name, {'ctx': self.ctx})
