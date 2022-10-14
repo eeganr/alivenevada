@@ -23,6 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+eiukpo(*21$_!+6uex$n7-!p-6+h+fru5+^err-jyjpyu7kr8'
 
+MAPBOX_KEY = "pk.eyJ1Ijoid2hpemVyYW0iLCJhIjoiY2w5NHptM3JrMDBmbTN4cWoxenUxaDExdyJ9.1zGA3Qi_ehtEobjRUlBSXw"
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web.apps.WebConfig',
+    "mapbox_location_field",
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
