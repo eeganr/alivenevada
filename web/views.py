@@ -4,6 +4,9 @@ from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from web.forms import MapForm
+from web.models import Place
+from django.forms.models import model_to_dict
+import os
 
 class ContributeView(TemplateView):
     def __init__(self):
@@ -84,9 +87,100 @@ class AnimalsView(TemplateView):
         self.ctx = ''
 
     def get(self, request):
+        print(Place.objects.all().values())
         return render(request, self.template_name, {'form': MapForm})
 
     def post(self, request):
         rq = request.POST.dict()
         print(rq)
+        form = MapForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                place = form.save(commit=False)
+                fb = Firebase()
+                fb.login_token(request.session['fbtoken'])
+                place.uuid = fb.user['userId']
+                place.item = rq['animal_name']
+                place.save()
+                fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
+                os.remove(f"{os.getcwd()}/media/{str(place.image)}")
+                place.image = fb.storage.child('animals').child(str(place.image)[7:]).get_url(fb.user['idToken'])
+                place.save()
+                data = model_to_dict(place)
+                data = {key: str(data[key]) for key in data.keys()}
+                fb.db.child('animals').push(data)
+                return redirect('/success/')
+            except:
+                return redirect('/error/')
+
         return render(request, self.template_name, {'form': MapForm})
+
+class PollutionView(TemplateView):
+    def __init__(self):
+        self.template_name = 'pollution.html'
+        self.ctx = ''
+
+    def get(self, request):
+        print(Place.objects.all().values())
+        return render(request, self.template_name, {'form': MapForm})
+
+    def post(self, request):
+        rq = request.POST.dict()
+        print(rq)
+        form = MapForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                place = form.save(commit=False)
+                fb = Firebase()
+                fb.login_token(request.session['fbtoken'])
+                place.uuid = fb.user['userId']
+                place.item = rq['pollution_name']
+                place.save()
+                fb.storage.child('pollution').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
+                os.remove(f"{os.getcwd()}/media/{str(place.image)}")
+                place.image = fb.storage.child('pollution').child(str(place.image)[7:]).get_url(fb.user['idToken'])
+                place.save()
+                data = model_to_dict(place)
+                data = {key: str(data[key]) for key in data.keys()}
+                fb.db.child('pollution').push(data)
+                return redirect('/success/')
+            except:
+                return redirect('/error/')
+
+        return render(request, self.template_name, {'form': MapForm})
+
+class InvasiveView(TemplateView):
+    def __init__(self):
+        self.template_name = 'invasive.html'
+        self.ctx = ''
+
+    def get(self, request):
+        print(Place.objects.all().values())
+        return render(request, self.template_name, {'form': MapForm})
+
+    def post(self, request):
+        rq = request.POST.dict()
+        print(rq)
+        form = MapForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                place = form.save(commit=False)
+                fb = Firebase()
+                fb.login_token(request.session['fbtoken'])
+                place.uuid = fb.user['userId']
+                place.item = rq['invasive_name']
+                place.save()
+                fb.storage.child('invasive').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
+                os.remove(f"{os.getcwd()}/media/{str(place.image)}")
+                place.image = fb.storage.child('invasive').child(str(place.image)[7:]).get_url(fb.user['idToken'])
+                place.save()
+                data = model_to_dict(place)
+                data = {key: str(data[key]) for key in data.keys()}
+                fb.db.child('invasive').push(data)
+                return redirect('/success/')
+            except:
+                return redirect('/error/')
+
+        return render(request, self.template_name, {'form': MapForm})
+
+
