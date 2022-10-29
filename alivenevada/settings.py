@@ -34,7 +34,7 @@ MAPBOX_KEY = os.environ['MAPBOX_KEY']
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'alivenevada.org',
+    'www.alivenevada.org',
     'alivenevada.herokuapp.com',
     'https://alivenevada.herokuapp.com/'
 ]
