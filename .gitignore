@@ -2,3 +2,13 @@
 *.log
 local_settings.py
 db.sqlite3
+
+# vscode
+.vscode/settings.json
+.vscode
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+#media
+media

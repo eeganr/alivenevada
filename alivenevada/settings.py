@@ -1,4 +1,3 @@
-import os
 
 """
 Django settings for alivenevada project.
@@ -13,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,6 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+eiukpo(*21$_!+6uex$n7-!p-6+h+fru5+^err-jyjpyu7kr8'
+
+MAPBOX_KEY = "pk.eyJ1Ijoid2hpemVyYW0iLCJhIjoiY2w5NHptM3JrMDBmbTN4cWoxenUxaDExdyJ9.1zGA3Qi_ehtEobjRUlBSXw"
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web.apps.WebConfig',
+    "mapbox_location_field",
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -118,10 +124,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# So it plays nice with firebase
+SESSION_COOKIE_AGE = 3600
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
