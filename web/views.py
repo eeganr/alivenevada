@@ -67,11 +67,9 @@ class RegisterView(TemplateView):
                     self.ctx = "Enter a valid email address."
                     if "@" in email:
                         self.ctx = "Email already in use."
-                        try:
-                            user = User.objects.create_user(email, email, password)
-                            user.save()
-                        except:
-                            return render(request, self.template_name, {'ctx': self.ctx})
+                        user = User.objects.create_user(email, email, password)
+                        user.save()
+                        #return render(request, self.template_name, {'ctx': self.ctx})
                         user = authenticate(username=email, email=email, password=rq["password"])
                         if user is not None:
                             login(request, user)
