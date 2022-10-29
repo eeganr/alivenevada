@@ -67,9 +67,11 @@ class RegisterView(TemplateView):
                     self.ctx = "Enter a valid email address."
                     if "@" in email:
                         self.ctx = "Email already in use."
-                        user = User.objects.create_user(email, email, password)
-                        user.save()
-                        #return render(request, self.template_name, {'ctx': self.ctx})
+                        try:
+                            user = User.objects.create_user(email, email, password)
+                            user.save()
+                        except:
+                            return render(request, self.template_name, {'ctx': self.ctx})
                         user = authenticate(username=email, email=email, password=rq["password"])
                         if user is not None:
                             login(request, user)
@@ -92,26 +94,23 @@ class AnimalsView(TemplateView):
         rq = request.POST.dict()
         form = MapForm(request.POST, request.FILES)
         if form.is_valid():
-            try:
-                place = form.save(commit=False)
-                fb = Firebase()
-                fb.login_token(request.session['fbtoken'])
-                place.uuid = fb.user['userId']
-                place.item = rq['animal_name']
-                if 'wildfire' in rq:
-                    place.tf = True
-                place.description = rq['notes']
-                place.save()
-                fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
-                os.remove(f"{os.getcwd()}/media/{str(place.image)}")
-                place.image = fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
-                place.save()
-                data = model_to_dict(place)
-                data = {key: str(data[key]) for key in data.keys()}
-                fb.db.child('animals').push(data)
-                return redirect('/success/')
-            except:
-                return redirect('/error/')
+            place = form.save(commit=False)
+            fb = Firebase()
+            fb.login_token(request.session['fbtoken'])
+            place.uuid = fb.user['userId']
+            place.item = rq['animal_name']
+            if 'wildfire' in rq:
+                place.tf = True
+            place.description = rq['notes']
+            place.save()
+            fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
+            os.remove(f"{os.getcwd()}/media/{str(place.image)}")
+            place.image = fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
+            place.save()
+            data = model_to_dict(place)
+            data = {key: str(data[key]) for key in data.keys()}
+            fb.db.child('animals').push(data)
+            return redirect('/success/')
 
         return render(request, self.template_name, {'form': MapForm})
 
