@@ -92,7 +92,6 @@ class AnimalsView(TemplateView):
 
     def post(self, request):
         rq = request.POST.dict()
-        print(rq)
         form = MapForm(request.POST, request.FILES)
         if form.is_valid():
             try:
@@ -101,10 +100,13 @@ class AnimalsView(TemplateView):
                 fb.login_token(request.session['fbtoken'])
                 place.uuid = fb.user['userId']
                 place.item = rq['animal_name']
+                if 'wildfire' in rq:
+                    place.tf = True
+                place.description = rq['notes']
                 place.save()
                 fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
                 os.remove(f"{os.getcwd()}/media/{str(place.image)}")
-                place.image = fb.storage.child('animals').child(str(place.image)[7:]).get_url(fb.user['idToken'])
+                place.image = fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
                 place.save()
                 data = model_to_dict(place)
                 data = {key: str(data[key]) for key in data.keys()}
@@ -126,7 +128,6 @@ class PollutionView(TemplateView):
 
     def post(self, request):
         rq = request.POST.dict()
-        print(rq)
         form = MapForm(request.POST, request.FILES)
         if form.is_valid():
             try:
@@ -138,7 +139,7 @@ class PollutionView(TemplateView):
                 place.save()
                 fb.storage.child('pollution').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
                 os.remove(f"{os.getcwd()}/media/{str(place.image)}")
-                place.image = fb.storage.child('pollution').child(str(place.image)[7:]).get_url(fb.user['idToken'])
+                place.image = fb.storage.child('pollution').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
                 place.save()
                 data = model_to_dict(place)
                 data = {key: str(data[key]) for key in data.keys()}
@@ -146,7 +147,6 @@ class PollutionView(TemplateView):
                 return redirect('/success/')
             except:
                 return redirect('/error/')
-
         return render(request, self.template_name, {'form': MapForm})
 
 class InvasiveView(TemplateView):
@@ -169,10 +169,11 @@ class InvasiveView(TemplateView):
                 fb.login_token(request.session['fbtoken'])
                 place.uuid = fb.user['userId']
                 place.item = rq['invasive_name']
+                place.description = rq['notes']
                 place.save()
                 fb.storage.child('invasive').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
                 os.remove(f"{os.getcwd()}/media/{str(place.image)}")
-                place.image = fb.storage.child('invasive').child(str(place.image)[7:]).get_url(fb.user['idToken'])
+                place.image = fb.storage.child('invasive').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
                 place.save()
                 data = model_to_dict(place)
                 data = {key: str(data[key]) for key in data.keys()}

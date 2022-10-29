@@ -48,9 +48,22 @@
 				<form method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					{% bootstrap_form form %}
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" name="wildfire" value="1" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">
+						  Was this sighting wildfire related?
+						</label>
+					</div>
+
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">What type of animal is it?</span>
 						<input class="input100" type="text" name="animal_name" placeholder="Type the animal's name:">
+					</div><br>
+
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Any other notes?</span>
+						<input class="input100" type="text" name="notes" placeholder="Type the animal's name:">
 					</div><br>
 
 					<div class="container-login100-form-btn">

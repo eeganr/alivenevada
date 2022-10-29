@@ -18,6 +18,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -55,11 +56,22 @@
         <section class="page-section bg-primary" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 text-center">
+                    <div class="col-lg-8">
                         <h2 class="text-white mt-0">Let's Make Sure Nature's On Track, Shall We?</h2>
                         <hr class="divider divider-light" />
-                        <p class="text-white-75 mb-4">Our environments are very fragile, and it's important for us to take care of them. Help us keep track of what's going on as you're out and about right in your browser.</p>
-                        <a class="btn btn-light btn-xl" href="/contribute">Help Out!</a>
+                        <p class="text-white-75 mb-4">Alive Nevada is an initiative to protect the environment and the wildlife that thrives in it, which
+                            makes Nevada one of the best places to live on the planet.</p>
+                        <p class="text-white-75 mb-4"> Our goals are to:
+                            <ul class="text-white-75 mb-4">
+                                <li>help Nevadans learn about the biodiversity that make up the environment they live in
+                                    and help protect them</li>
+                                <li>help track the migratory path and behavior of animals fleeing ever more frequent wildfires </li>
+                                <li>help protect our biodiversity from invasive species</li>
+                                <li>create a collaborative, community based, crowd sourced database of observations of
+                                    wildlife and invasive species distributions over the years</li>
+                            </ul>
+                            <a class="btn btn-light btn-xl" href="/contribute">Help Out!</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -95,6 +107,44 @@
                 </div>
             </div>
         </section>
+
+        <section class="page-section bg-primary" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mt-0">Why You Should Care:</h2>
+                        <hr class="divider divider-light" />
+                        <p class="text-white-75 mb-4">The challenges facing Nevada’s environment, wildlife, grasslands and water bodies are immense
+                            and complicated. But we believe that the power of communities and collaboration can, and will,
+                            prove capable of meeting these challenges.
+                            <br><br>
+                            Northern Nevada is a beautiful place with pictureque views of the Sierra Nevada mountains,
+                            the meandering Truckee river, Lake Tahoe, Pyramid Lake, Washoe Lake, and an uncountable number of ponds,
+                            lakes and streams. This environment provides a safe habitat for many species of native wildlife
+                            and endangered species. These treasures are threatened by unprecedented challenges.
+                            <br><br>
+                            Nevada’s increasing average temperatures and increase in the frequency and intensity of heat
+                            waves is predicted to change the available habitat of many species and negatively impact the health of our wildlife. 
+                            Given this prediction, it is the time to act now. By keeping a record
+                            of public observations of our wildlife, and providing the data in an open-source fashion  for public science and/or lab research, 
+                            we can understand the trend over years regarding the population, distribution, migration pathways, and survival ability of all observable species in our habitat.
+                            With trend data available, we can take proactive measures to intervene at appropriate times.
+                            <br><br>
+                            However, this can only be possible with the help of many Nevadans willing to record and report their observations for scientific research.
+                            <br><br>
+                            You can help by keeping a lookout for the presence of wildlife in your neighborhood, grasslands and water bodies.
+                            Create an account and simply log into the app to report your observation and upload a picture taken.
+                            If you cannot identify the animal, that is alright, enter unknown and upload a picture. We are in the process
+                            of building a AI (Artificial Intelligence) to identify the wildlife based on Nevada wildlife
+                            database.
+                            <br><br>
+                            If you need the crowdsourced data for your research, please contact us.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Call to action-->
         <section class="page-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">
@@ -109,64 +159,7 @@
                     <div class="col-lg-8 col-xl-6 text-center">
                         <h2 class="mt-0">Let's Get In Touch!</h2>
                         <hr class="divider" />
-                        <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                    <div class="col-lg-6">
-
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
+                        <p class="text-muted mb-5">Email us at: contact@alivenevada.org</p>
                     </div>
                 </div>
             </div>

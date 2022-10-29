@@ -9,3 +9,5 @@ class Place(models.Model):
     address = AddressAutoHiddenField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     uuid = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    tf = models.BooleanField(default=False)
