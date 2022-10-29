@@ -105,10 +105,9 @@ class AnimalsView(TemplateView):
             place.save()
             fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
             os.remove(f"{os.getcwd()}/media/{str(place.image)}")
-            place.image = fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
-            place.save()
             data = model_to_dict(place)
             data = {key: str(data[key]) for key in data.keys()}
+            data['image'] = fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).get_url(fb.user['idToken'])
             fb.db.child('animals').push(data)
             return redirect('/success/')
 
