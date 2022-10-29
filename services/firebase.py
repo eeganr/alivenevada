@@ -1,9 +1,10 @@
 import pyrebase
+import os
 
 class Firebase:
     def __init__(self):
         config = {
-            "apiKey": "AIzaSyCmgIMegl9Qg_wKEw0-ZE3FiZ8kxnLiaII",
+            "apiKey": os.environ['FIREBASE_API_KEY'],
             "authDomain": "alivenevada.firebaseapp.com",
             "databaseURL": "https://alivenevada-default-rtdb.firebaseio.com",
             "storageBucket": "alivenevada.appspot.com"

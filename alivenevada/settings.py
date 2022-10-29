@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+# Initialise environment variables
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,14 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+eiukpo(*21$_!+6uex$n7-!p-6+h+fru5+^err-jyjpyu7kr8'
+SECRET_KEY = os.environ['SECRET_KEY']
 
-MAPBOX_KEY = "pk.eyJ1Ijoid2hpemVyYW0iLCJhIjoiY2w5NHptM3JrMDBmbTN4cWoxenUxaDExdyJ9.1zGA3Qi_ehtEobjRUlBSXw"
+MAPBOX_KEY = os.environ['MAPBOX_KEY']
 
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
