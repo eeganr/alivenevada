@@ -103,8 +103,9 @@ class AnimalsView(TemplateView):
             if 'wildfire' in rq:
                 place.tf = True
             place.description = rq['notes']
+            place.save()
             if not place.item:
-                model = TensorflowLiteClassificationModel(f"{os.getcwd()}/web/models.tflite", ['goldeneye', 'mink'])
+                model = TensorflowLiteClassificationModel(f"{os.getcwd()}/web/model.tflite", ['goldeneye', 'mink'])
                 (label, probability) = model.run_from_filepath(f"{os.getcwd()}/media/{str(place.image)}")
                 place.item = label[0]
             place.save()
