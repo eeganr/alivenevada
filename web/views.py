@@ -104,10 +104,12 @@ class AnimalsView(TemplateView):
                 place.tf = True
             place.description = rq['notes']
             place.save()
+            request.session['msg'] = ''
             if not place.item:
                 model = TensorflowLiteClassificationModel(f"{os.getcwd()}/web/model.tflite", ['goldeneye', 'mink'])
                 (label, probability) = model.run_from_filepath(f"{os.getcwd()}/media/{str(place.image)}")
                 place.item = label[0]
+                request.session['msg'] = f"Your image was classified as a {label[0]}."
             place.save()
             fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
             os.remove(f"{os.getcwd()}/media/{str(place.image)}")
@@ -146,6 +148,7 @@ class PollutionView(TemplateView):
                 data = model_to_dict(place)
                 data = {key: str(data[key]) for key in data.keys()}
                 fb.db.child('pollution').push(data)
+                request.session['msg'] = ''
                 return redirect('/success/')
             except:
                 return redirect('/error/')
@@ -180,10 +183,17 @@ class InvasiveView(TemplateView):
                 data = model_to_dict(place)
                 data = {key: str(data[key]) for key in data.keys()}
                 fb.db.child('invasive').push(data)
+                request.session['msg'] = ''
                 return redirect('/success/')
             except:
                 return redirect('/error/')
 
         return render(request, self.template_name, {'form': MapForm})
 
+class SuccessView(TemplateView):
+    def __init__(self):
+        self.template_name = 'success.html'
+        self.ctx = ''
 
+    def get(self, request):
+        return render(request, self.template_name, {'msg': request.session['msg']})

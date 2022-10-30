@@ -42,6 +42,9 @@
                         <hr class="divider" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
+                        {% if msg %}
+                            <p class="text-white-75 mb-5">{{ msg }}</p>
+                        {% endif %}
                         <p class="text-white-75 mb-5">Have something else to report?</p>
                         <a class="btn btn-primary btn-xl" href="/contribute">Contribute</a>
                     </div>
