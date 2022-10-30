@@ -7,6 +7,7 @@ from web.forms import MapForm
 from web.models import Place
 from django.forms.models import model_to_dict
 import os
+from services.classification import TensorflowLiteClassificationModel
 
 class ContributeView(TemplateView):
     def __init__(self):
@@ -102,6 +103,10 @@ class AnimalsView(TemplateView):
             if 'wildfire' in rq:
                 place.tf = True
             place.description = rq['notes']
+            if not place.item:
+                model = TensorflowLiteClassificationModel(f"{os.getcwd()}/web/models.tflite", ['goldeneye', 'mink'])
+                (label, probability) = model.run_from_filepath(f"{os.getcwd()}/media/{str(place.image)}")
+                place.item = label[0]
             place.save()
             fb.storage.child('animals').child(str(place.image)[7:] + str(place.id)).put(f"{os.getcwd()}/media/{str(place.image)}", fb.user['idToken'])
             os.remove(f"{os.getcwd()}/media/{str(place.image)}")
