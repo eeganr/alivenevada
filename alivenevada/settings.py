@@ -36,7 +36,9 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'www.alivenevada.org',
     'alivenevada.herokuapp.com',
-    'https://alivenevada.herokuapp.com/'
+    'https://alivenevada.herokuapp.com/',
+    '.alivenevada.org',
+    'alivenevada.org'
 ]
 
 
