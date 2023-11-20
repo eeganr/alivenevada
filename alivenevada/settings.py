@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
     'alivenevada.herokuapp.com',
     'https://alivenevada.herokuapp.com/',
     '.alivenevada.org',
-    'alivenevada.org'
+    'alivenevada.org',
 ]
 
 
